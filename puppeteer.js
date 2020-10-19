@@ -2,7 +2,8 @@
 const puppeteer = require('puppeteer');
 
 const start_time = Date.now();
-const total_allowed_time = (((5 * 60) + 30) * 60) * 1000;
+// const total_allowed_time = (((5 * 60) + 30) * 60) * 1000;
+const total_allowed_time = 1978643;
 
 crawlPage("https://techmeme.com", "techmeme");
 crawlPage("https://techmeme.com/river", "river");
