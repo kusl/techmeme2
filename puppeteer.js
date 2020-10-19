@@ -57,7 +57,7 @@ function crawlPage(url, prefix) {
             try {
                 if ((Date.now() - start_time < total_allowed_time)
                     && addresses[i].startsWith("http") === true
-                    && master_list.find(addresses[i] === undefined)) {
+                    && master_list.find(addresses[i]) === undefined) {
                     console.log(`Now serving ${i} of ${addresses.length}: ${addresses[i]}`);
                     master_list.push(addresses[i]);
                     await page.goto(addresses[i], { waitUntil: "networkidle0", timeout: 0 });
