@@ -74,10 +74,16 @@ function crawlPage(url, prefix) {
                         fullPage: false
                     });
                 }
+                else {
+                    console.log(`Skip serving ${i} of ${addresses.length}: ${addresses[i]}`);
+                }
             } catch (error) {
                 console.error(error);
             } finally {
                 console.log(`Finished with ${i} of ${addresses.length}: ${addresses[i]}`);
+                console.log(`Time now: ${Date.now()}. Start time: ${start_time}`);
+                console.warn(`Time elapsed: ${ (Date.now() - start_time) / (1000 * 60) } minutes`); 
+                console.warn(`Time elapsed: ${ (Date.now() - start_time) / (1000 * 60 * 60) } hours`); 
             };
         }
 
