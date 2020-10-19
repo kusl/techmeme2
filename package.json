@@ -1,0 +1,6 @@
+{
+  "license": "AGPL-3.0-or-later",
+  "dependencies": {
+    "puppeteer": "^5.3.1"
+  }
+}
