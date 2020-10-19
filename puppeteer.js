@@ -8,9 +8,8 @@ crawlPage("https://techmeme.com", "techmeme");
 crawlPage("https://techmeme.com/river", "river");
 crawlPage("https://techmeme.com/lb", "leaderboards");
 
-const master_list = [];
-
 function delay(time) {
+    console.warn(`waiting for ${time / 1000} seconds...`);
     return new Promise(function (resolve) {
         setTimeout(resolve, time)
     });
@@ -56,11 +55,12 @@ function crawlPage(url, prefix) {
         for (let i = 0; i < addresses.length; i++) {
             try {
                 if ((Date.now() - start_time < total_allowed_time)
-                    && addresses[i].startsWith("http") === true
-                    && master_list.find(addresses[i]) === undefined) {
+                    && addresses[i].startsWith("http") === true) {
                     console.log(`Now serving ${i} of ${addresses.length}: ${addresses[i]}`);
                     master_list.push(addresses[i]);
                     await page.goto(addresses[i], { waitUntil: "networkidle0", timeout: 0 });
+                    
+                    await delay(1000);
 
                     const watchDog = page.waitForFunction(() => 'window.status === "ready"', { timeout: 0 });
                     await watchDog;
