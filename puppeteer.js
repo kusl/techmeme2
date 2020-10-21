@@ -42,15 +42,6 @@ function crawlPage(url, prefix) {
             timeout: 0
         });
 
-        await page.screenshot({
-            path: `screenshots/${prefix}.png`,
-            fullPage: true
-        });
-        await page.screenshot({
-            path: `screenshots/${prefix}-fold.png`,
-            fullPage: false
-        });
-
         const addresses = await page.$$eval('a', as => as.map(a => a.href));
         const padding = addresses.length % 10;
         for (let i = 0; i < addresses.length; i++) {
