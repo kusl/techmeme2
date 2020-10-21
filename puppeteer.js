@@ -2,8 +2,8 @@
 const puppeteer = require('puppeteer');
 
 const start_time = Date.now();
-// const total_allowed_time = (((5 * 60) + 30) * 60) * 1000;
-const total_allowed_time = 3000;
+const total_allowed_time = ((30) * 60) * 1000;
+// const total_allowed_time = 3000;
 
 crawlPage("https://techmeme.com", "techmeme");
 crawlPage("https://techmeme.com/river", "river");
@@ -49,6 +49,7 @@ function crawlPage(url, prefix) {
                 if ((Date.now() - start_time < total_allowed_time)
                     && addresses[i].startsWith("http") === true) {
                     console.log(`Now serving ${i} of ${addresses.length}: ${addresses[i]}`);
+                    await delay(30000);
                 }
                 else {
                     console.log(`Skip serving ${i} of ${addresses.length}: ${addresses[i]}`);
